@@ -6,12 +6,6 @@ console.log("Hello World")
 
 var jsonMessage = "Hello Json";
 
-if (process.env.MESSAGE_STYLE === 'uppercase') { // take environment variable value to make a logic
-    envMessage = jsonMessage.toUpperCase();
-} else {
-    envMessage = jsonMessage;
-}
-
 app.use('/public', express.static(__dirname + '/public')) // express static to access public file such css
 
 app.get('/', function (req, res) { // app.METHOD(PATH, HANDLER). Handler is a function with (req, res) param
@@ -23,6 +17,13 @@ app.get('/', function (req, res) { // app.METHOD(PATH, HANDLER). Handler is a fu
 })
 
 app.get('/json', function (req, res) { // get a json request to the route '/json'
+
+    if (process.env.MESSAGE_STYLE === 'uppercase') { // take environment variable value to make a logic
+        envMessage = jsonMessage.toUpperCase();
+    } else {
+        envMessage = jsonMessage;
+    }
+
     res.json({
         "message": envMessage // the requested json
     })
