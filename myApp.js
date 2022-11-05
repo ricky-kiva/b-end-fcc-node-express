@@ -7,7 +7,7 @@ console.log("Hello World")
 var jsonMessage = "Hello Json";
 
 if (process.env.MESSAGE_STYLE == 'uppercase') { // take environment variable value to make a logic
-    jsonMessage = jsonMessage.toUpperCase;
+    jsonMessage = jsonMessage.toUpperCase();
 }
 
 app.use('/public', express.static(__dirname + '/public')) // express static to access public file such css
