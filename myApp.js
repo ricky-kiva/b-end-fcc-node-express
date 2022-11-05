@@ -25,7 +25,7 @@ app.get('/json', function (req, res) { // get a json request to the route '/json
     }
 
     res.json({
-        message: envMessage // the requested json
+        "message": envMessage // the requested json
     })
 })
 
