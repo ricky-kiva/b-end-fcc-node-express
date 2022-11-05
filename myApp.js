@@ -1,7 +1,14 @@
+require('dotenv').config()
 let express = require('express');
 let app = express();
 
 console.log("Hello World")
+
+var jsonMessage = "Hello Json";
+
+if (process.env.MESSAGE_STYLE == 'uppercase') {
+    jsonMessage = jsonMessage.toUpperCase;
+}
 
 app.use('/public', express.static(__dirname + '/public')) // express static to access public file such css
 
@@ -15,7 +22,7 @@ app.get('/', function (req, res) { // app.METHOD(PATH, HANDLER). Handler is a fu
 
 app.get('/json', function (req, res) { // get a json request to the route '/json'
     res.json({
-        "message": "Hello json" // the requested json
+        "message": jsonMessage // the requested json
     })
 })
 
