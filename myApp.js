@@ -14,7 +14,7 @@ app.get('/', function (req, res) { // app.METHOD(PATH, HANDLER). Handler is a fu
 })
 
 app.get('/json', function (req, res) { // get a json request to the route '/json'
-    res.json({
+    req.json({
         "message": "Hello json" // the requested json
     })
 })
