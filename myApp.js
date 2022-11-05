@@ -6,7 +6,7 @@ console.log("Hello World")
 
 var jsonMessage = "Hello Json";
 
-if (process.env.MESSAGE_STYLE == 'uppercase') { // take environment variable value to make a logic
+if (process.env.MESSAGE_STYLE === 'uppercase') { // take environment variable value to make a logic
     envMessage = jsonMessage.toUpperCase();
 } else {
     envMessage = jsonMessage;
