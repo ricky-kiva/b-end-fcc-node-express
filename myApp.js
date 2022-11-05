@@ -13,4 +13,10 @@ app.get('/', function (req, res) { // app.METHOD(PATH, HANDLER). Handler is a fu
     res.send('Hello Express') // sending the string to '/' directory
 })
 
+app.get('/json', function (req, res) { // get a json request to the route '/json'
+    res.json({
+        "message": "Hello json" // the requested json
+    })
+})
+
 module.exports = app;
