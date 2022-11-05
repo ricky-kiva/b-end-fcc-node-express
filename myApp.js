@@ -3,6 +3,8 @@ let app = express();
 
 console.log("Hello World")
 
+app.use('/', express.static(__dirname + '/public/style.css')) // express static to access public file such css
+
 app.get('/', function (req, res) { // app.METHOD(PATH, HANDLER). Handler is a function with (req, res) param
     res.sendFile(__dirname + "/views/index.html") // HANDLER.res.sendFile will send file from given path as it's param
 })
