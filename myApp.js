@@ -42,11 +42,19 @@ app.get('/now', (req, res, next) => {
 })
 
 app.get('/:word/echo', (req, res, next) => {
-    let word = req.params.word;
+    let word = req.params.word; // mysite.co/rickyslash/echo will send an object containing {echo: rickyslash}
     res.json({
         "echo": word
     })
-}) 
+})
+
+app.get('/name', (req, res) => {
+    let first = req.query.first; // mysite.co/name?first=Ricky&last=Skywalker will send an object {name: Ricky Skywalker}
+    let last = req.query.last;
+    res.json({
+      'name': `${first} ${last}`
+    })
+})
 
 module.exports = app;
 
