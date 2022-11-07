@@ -16,10 +16,10 @@ app.get('/', function (req, res) { // app.METHOD(PATH, HANDLER). Handler is a fu
 
 app.get('/json', function (req, res) { // get a json request to the route '/json'
 
+    let message = "Hello json";
+
     if (process.env.MESSAGE_STYLE === 'uppercase') { // take environment variable value to make a logic
-        var message = "Hello Json".toUpperCase();
-    } else {
-        var message = "Hello Json"
+        message = message.toUpperCase();
     }
 
     res.json({
