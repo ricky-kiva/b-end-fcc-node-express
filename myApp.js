@@ -4,6 +4,11 @@ let app = express();
 
 console.log("Hello World")
 
+app.use(function logger(req, res, next) {
+    console.log(`${req.method} ${req.path} - ${req.ip}`);
+    next();
+})
+
 app.use('/public', express.static(__dirname + '/public')) // express static to access public file such css
 
 app.get('/', function (req, res) { // app.METHOD(PATH, HANDLER). Handler is a function with (req, res) param
