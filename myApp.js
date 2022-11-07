@@ -35,8 +35,17 @@ app.get('/json', function (req, res) { // get a json request to the route '/json
 app.get('/now', (req, res, next) => {
     req.time = new Date().toString();
     next();
-}, (req, res, next) => {
-    res.send({time: req.time});
+}, (req, res, next) => { // this is chain middleware, will only next() if the synchronous process complete
+    res.send({
+        time: req.time
+    });
 })
 
+app.get('/:word/echo', (req, res, next) => {
+    res.json({
+        "echo": word
+    })
+}) 
+
 module.exports = app;
+
