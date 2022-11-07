@@ -4,7 +4,7 @@ let app = express();
 
 console.log("Hello World")
 
-app.use(function logger(req, res, next) {
+app.use(function logger(req, res, next) { // Make a logger middleware using express().use
     console.log(`${req.method} ${req.path} - ${req.ip}`);
     next();
 })
