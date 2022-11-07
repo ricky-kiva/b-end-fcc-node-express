@@ -4,12 +4,12 @@ let app = express();
 
 console.log("Hello World")
 
+app.use('/public', express.static(__dirname + '/public')) // express static to access public file such css
+
 app.use(function logger(req, res, next) { // Make a logger middleware using express().use
     console.log(`${req.method} ${req.path} - ${req.ip}`);
     next();
 })
-
-app.use('/public', express.static(__dirname + '/public')) // express static to access public file such css
 
 app.get('/', function (req, res) { // app.METHOD(PATH, HANDLER). Handler is a function with (req, res) param
     res.sendFile(__dirname + "/views/index.html") // HANDLER.res.sendFile will send file from given path as it's param
@@ -30,6 +30,13 @@ app.get('/json', function (req, res) { // get a json request to the route '/json
     res.json({
         "message": message // the requested json
     })
+})
+
+app.get('/now', (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+}, (req, res, next) => {
+    res.send({time: req.time});
 })
 
 module.exports = app;
