@@ -1,8 +1,11 @@
 require('dotenv').config()
+let bodyParser = require('body-parser');
 let express = require('express');
 let app = express();
 
 console.log("Hello World")
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/public', express.static(__dirname + '/public')) // express static to access public file such css
 
@@ -54,6 +57,14 @@ app.get('/name', (req, res) => {
     res.json({
       'name': `${first} ${last}`
     })
+})
+
+app.post('/name', (req, res) => {
+  let first = req.body.first;
+  let last = req.body.last;
+  res.json({
+    'name': `${first} ${last}`
+  })
 })
 
 module.exports = app;
